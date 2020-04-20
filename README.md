@@ -11,10 +11,10 @@ Los registros se comunican con la aplicación en la que han sido registrdos. Par
 
 <img src="./images/ttn-add-application.png" width="400" align="right" />
 En la consola, selecciona _APPLICATION_ y pulsa _add application_ en la siguiente pantalla. 
-- Para el _Application ID_, elige un identificador único, en minúsculas, puedes usar caractares alfanuméricos peor no guiones ´-´consecutivos.
-- Para  _Description_, elige la descripcion que prefieras.
-- No hace falta poner nada en _Application EUI_ 
-- En _Handler registration_ deja el valor predeterminado: ttn-handler-eu
-- Presiona _Add Application_ para finalizar
+-Para el _Application ID_, elige un identificador único, en minúsculas, puedes usar caractares alfanuméricos peor no guiones ´-´consecutivos.
+-Para  _Description_, elige la descripcion que prefieras.
+-No hace falta poner nada en _Application EUI_ 
+-En _Handler registration_ deja el valor predeterminado: ttn-handler-eu
+-Presiona _Add Application_ para finalizar
 
 Ahora seremos redirigidos a la página con la nueva aplicación añadida donde puedes encontrar la _app EUI_ y el _Access Keys_ generados.
