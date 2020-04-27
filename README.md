@@ -3,7 +3,8 @@ Sistema de detección y notificación de incidentes y accesos en garages
 En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para detectar la interrupción de un haz LASER a fin de detectar el paso de una persona. Más adelante podríamos incluir otros detectores de movimientos como un PIR (Passive infrared sensor).
 
 <img src="./images/garage-cerberus_PoC.png" width="300" align="right" />
-El montaje se basa en un procesador ESP32 programado en C++ con las librerias de [Arduino LMIC](https://github.com/matthijskooijman/arduino-lmic) desarrolladas por IBM para los chips LoRa SX1272, SX1276 que son compatibles con muchos circuitos. 
+El montaje se basa en un procesador ESP32 programado en C++ con las librerias de 
+[Arduino LMIC](https://github.com/matthijskooijman/arduino-lmic/) desarrolladas por IBM para los chips LoRa SX1272, SX1276 que son compatibles con muchos circuitos. 
 
 El sensor se basa en un LED Laser y una fotoresistencia que se lee por un puerto de conversión Analogico/Digital. El programa ajusta los niveles de luz umbral al arrancar la placa. De manera que si se bloquea la luz se desencadena el proceso de aviso acústivo y envio de mensaje de alerta por LoRa.
 
@@ -22,6 +23,10 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 <img src="./images/garage-cerberus_bb.png" width="600" align="center" />
 <img src="./images/garage-cerberus_device_inside.jpg" width="300" align="left" />
 <img src="./images/garage-cerberus_device_laser.JPG" width="300" align="right" />
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
