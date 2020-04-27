@@ -4,7 +4,7 @@ En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para d
 
 El montaje se basa en un procesador ESP32 programado en C++ con las librerias de [Arduino LMIC](https://github.com/matthijskooijman/arduino-lmic) desarrolladas por IBM para los chips LoRa SX1272, SX1276 que son compatibles con muchos circuitos. 
 El sensor se basa en un LED Laser y una fotoresistencia que se lee por un puerto de conversión Analogico/Digital. El programa ajusta los niveles de luz umbral al arrancar la placa. De manera que si se bloquea la luz se desencadena el proceso de aviso acústivo y envio de mensaje de alerta por LoRa:
-<video src="./images/garage-cerberus_PoC.mov" width="320" height="200" controls preload></video>
+<video src="./images/garage-cerberus_PoC.mp4" width="320" height="200" controls preload></video>
 
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
