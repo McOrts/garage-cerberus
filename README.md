@@ -10,7 +10,6 @@ El sensor se basa en un LED Laser y una fotoresistencia que se lee por un puerto
 La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka TTN)](https://www.thethingsnetwork.org/) e [IFTTT](https://ifttt.com/). La información finalmente se procesa en flujos de un programa en Node-red que corre en un contenedor Docker sobre una Raspberry Pi 3B+ con Raspbian. La foto de esta arquitectura sería esta:
 <br>
 <br>
-<br>
 <img src="./images/garage-cerberus_architecture.png" width="600" align="center" />
 
 ## Material utilizado
@@ -23,6 +22,14 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 <img src="./images/garage-cerberus_bb.png" width="600" align="center" />
 <img src="./images/garage-cerberus_device_inside.jpg" width="300" align="left" />
 <img src="./images/garage-cerberus_device_laser.JPG" width="300" align="right" />
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
