@@ -4,16 +4,26 @@ En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para d
 
 El montaje se basa en un procesador ESP32 programado en C++ con las librerias de [Arduino LMIC](https://github.com/matthijskooijman/arduino-lmic) desarrolladas por IBM para los chips LoRa SX1272, SX1276 que son compatibles con muchos circuitos. 
 El sensor se basa en un LED Laser y una fotoresistencia que se lee por un puerto de conversión Analogico/Digital. El programa ajusta los niveles de luz umbral al arrancar la placa. De manera que si se bloquea la luz se desencadena el proceso de aviso acústivo y envio de mensaje de alerta por LoRa:
-<video src="garage-cerberus_PoC.mp4" width="320" height="200" controls preload></video>
+<br>
+<img src="./images/garage-cerberus_PoC.png" width="300" align="left" />
+
+La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka TTN)](https://www.thethingsnetwork.org/) e [IFTTT](https://ifttt.com/). La información finalmente se procesa en flujos de un programa en Node-red que corre en un contenedor Docker sobre una Raspberry Pi 3B+ con Raspbian. La foto de esta arquitectura sería esta:
+<br>
+<img src="./images/garage-cerberus_architecture.png" width="600" align="center" />
 
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
-- La *fuente Laser* es un pequeño [Diodo de 5mW y longitud de onda roja de 650 nm.](https://es.aliexpress.com/item/32400936169.html)
-- El *receptor* es una resistencia sensible a la luz de 12mm [GL12528 LDR](https://es.aliexpress.com/item/32292338404.html)
-- Y como *altavoz* un [buzzer pensado para montajes de Arduino](https://es.aliexpress.com/item/32849730395.html)
+- La **fuente Laser** es un pequeño [Diodo de 5mW y longitud de onda roja de 650 nm.](https://es.aliexpress.com/item/32400936169.html)
+- El **receptor** es una resistencia sensible a la luz de 12mm [GL12528 LDR](https://es.aliexpress.com/item/32292338404.html)
+- Y como **altavoz** un [buzzer pensado para montajes de Arduino](https://es.aliexpress.com/item/32849730395.html)
 
-## Registro del sensor en la nube (TTN)
-Vamos a utilizar los servicios de [The Thing Networs (aka TTN)](https://www.thethingsnetwork.org/) que enrutarán el mensaje desde el _gateway_ que reciba por radiofrecuencia el paquete de datos hasta el _endpoint_ que consumirá la aqplicación que tome acción con la información contenida en la trama da datos. 
+## Montaje
+
+<img src="./images/garage-cerberus_bb.png" width="400" align="center" />
+<img src="./images/garage-cerberus_device_inside.jpg" width="400" align="center" />
+
+## Registro del sensor en la nube
+Vamos a utilizar los servicios de TTN que enrutarán el mensaje desde el _gateway_ que reciba por radiofrecuencia el paquete de datos hasta el _endpoint_ que consumirá la aqplicación que tome acción con la información contenida en la trama da datos. 
 
 Este dispositivo es del tipo ABP (Activation-by-personalisation) lo que significa que se identificará en la red con un _DevAddr_ y una _Session key_ preconfigurada.Para ello tenemos que completar el registro de una aplicación y un dispositivo. Estos son los pasos a seguir:
 
@@ -30,4 +40,5 @@ En la consola, selecciona _APPLICATION_ y pulsa _add application_ en la siguient
 - Presiona _Add Application_ para finalizar
 
 Ahora seremos redirigidos a la página con la nueva aplicación añadida donde puedes encontrar la _app EUI_ y el _Access Keys_ generados.
-<img src="./images/ttn-application.png" width="400" align="center" />
+<br>
+<img src="./images/ttn-application.png" width="600" align="center" />
