@@ -65,12 +65,12 @@ Ahora seremos redirigidos a la página con la nueva aplicación añadida donde p
 
 ### Registro del dispositivo
 
-<img src="./images/ttn-add-device.png" width="500" align="right" />
+<img src="./images/ttn-add-device.png" width="400" align="right" />
 
 En TTN un dispositivo (devide) representa la configuración de lo que también llama nodo (node) que a fin de cuentas es nuestro circuito. 
 Al acceder al formulario de registro, únicamente tenermos que rellenar el _Device ID_ que será el nombre único de este nodo. Es preferible  pulsar el icono marcado en la imágen para que se genere automáticamente el _Device EUI_.
 
-<img src="./images/ttn-add-device_params.png" width="500" align="center" />
+<img src="./images/ttn-add-device_params.png" width=400" align="left" />
 
 Finalmente pulsaremos _Register_ y pulsaremos el icono con el nombre de nuestro nuevo dispositivo para ver sus datos de configuración. Aquí encontraremos los parámetros que necesitamos por ser un dispositivo de tipo ABP. Y que tendremos que pasar al fichero de configuración settings.h que se cargará en el _sketch_ del IDE de Arduino.
 Pero el formato para las Keys es diferente. Encontrarás aquí una hoja excel (Encode_EUI.xlsx) que te facilitará esta tarea.
@@ -89,23 +89,49 @@ const int update_time_alive = 150000;
 const int PhotoCell = 2; 
 const int Buzzer = 15;
 ```
-### Formato de la trama
 
-<img src="./images/ttn-add-payload_format.png" width="400" align="left" />
+### Formato de la trama
 
 Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una última configuración. Pulsando en la pestaña de _Payload Formats_ accedemos al formulario donde se permite poner un script para decodificar la trama de datos de nuestro mensaje LoRa. En nuestro caso este es el formato.
 <hr>
+<img src="./images/ttn-add-payload_format.png" width="500" align="center" />
 
 ## Configuración servidor local
 
+<img src="./images/rpi-docker-logos.png" width=400" align="left" />
+
 La arquitectura elegida para el back y front está pensada para tener unos mínimos costes de operación y ser escalable. El uso de contenedores nos permitirá añadir nuevos dispositivos (Nodos TTN) rápidamente.
 
-El servidor utilizado ha sido una Raspberry Pi 3B+. Actualmente no es el modelo más potente pero suficiente para ejecutar varios contenedores. Las tareas inicales de configuración para instalar el sistema operativo Raspbian, Node-red y MySQL pueden ser fácilmente encontradas y son estándar. Las configuraciones propias para este proyecto las describo a continuación.
+El servidor utilizado ha sido una Raspberry Pi 3B+. Actualmente no es el modelo más potente pero suficiente para ejecutar varios contenedores. Las tareas inicales de configuración para instalar el sistema operativo Raspbian, y MySQL pueden ser fácilmente encontradas y son estándar. Los contenedores Docker y Node-RED con todos sus complementos necesarios para que se pueda ejecutar el flujo completo.Se describo a continuación.
 
-### Integración Noder-RED con TTN
+### Instalación de contenedores
+Para estas configuraciones me he basado en el documento: https://www.freecodecamp.org/news/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef/. Aquí resumo los pasos a seguir:
+
+1. Instalar Docker en RPI:
+```
+sudo groupadd docker
+sudo gpasswd -a $USER docker    newgrp docker
+docker run hello-world
+```
+2. Se crea el contenedor:
+```
+docker run -d -it -p 1881:1880 --name domohome-garage  nodered/node-red
+```
+### Complementos de Node-RED
+Se accede a una sesión SSH  (https://phoenixnap.com/kb/how-to-ssh-into-docker-container )
+     docker exec -it domohome-garage /bin/bash
+Se instala el nodo TTN: node-red-contrib-ttn (no instalar desde 'manage palette' en el dashboard)
+     npm install node-red-contrib-ttn
+Instalar el nodo node-red-dashboard desde 'manage palette' en el dashboard
+
+Se instala el nodo MySQL: node-red-node-mysql 
+    npm install node-red-node-mysql
+
+
+Una vez habilitada la aplicación Node-RED hay que añadir los nodos de integración de TTN. Esta es la guia 
 
 https://www.thethingsnetwork.org/docs/applications/nodered/
 
 ## Demo
 
-[garage cerberus demo](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
+[Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
