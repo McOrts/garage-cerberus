@@ -122,7 +122,7 @@ La aplicación Node-RED no incluye por defecto los nodos que necesitaremos para 
 
 Instalación estándar. Buscando el modulo ¨node-red-dashboard¨ en _install_ desde la opción de menú de _Manage Palette_ de la aplicación.
 
-**Nodos intrgración con TTN**
+**Nodos integración con TTN**
 
 Necesitaremos acceder al contenedor con una sesión SSH [Más info aquí](https://phoenixnap.com/kb/how-to-ssh-into-docker-container)
 ```
