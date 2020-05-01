@@ -86,10 +86,9 @@ const int Buzzer = 15;
 ```
 
 ### Formato de la trama
+<img src="./images/ttn-add-payload_format.png" width="400" align="right" />
 
 Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una última configuración. Pulsando en la pestaña de _Payload Formats_ accedemos al formulario donde se permite poner un script para decodificar la trama de datos de nuestro mensaje LoRa. En nuestro caso este es el formato:
-
-<img src="./images/ttn-add-payload_format.png" width="400" align="center" />
 
 ## Configuración servidor local
 
