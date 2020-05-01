@@ -16,7 +16,8 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 <img src="./images/garage-cerberus_architecture.png" width="600" align="center" />
 
 ## Demo
-[Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
+Demo de proceso completo, detección y notificación:
+[![Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/qcct-dORirM)
 
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
@@ -151,7 +152,7 @@ Para importar el flujo deberemos acceder a la aplicación Node-RED que tenemos a
 Tras pulsar el botón de ¨import¨ tendrás la vista de los nodos y los flujos. Pero hay dos de ellos que no están correctamente configurados.
 
 ### Configurar dispositivo TTN
-Abre las propiedades del nodo **TTN domohome_sensor_garage uplink** y busca los nombres y la Key en la consola de TTN según las siguienes correspondencias:
+Abre las propiedades del nodo **TTN domohome_sensor_garage uplink** y busca los nombres y la Key en la consola de TTN según las siguientes correspondencias:
 <img src="./images/garage-cerberus_nodeTTN1" align="center" />
 <img src="./images/garage-cerberus_nodeTTN2" align="center" />
 
@@ -166,7 +167,7 @@ https://maker.ifttt.com/trigger/domohome_garage_intruder/with/key/???????????
 <br>
 Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma.
 
-<img src="./images/garage-cerberus_IFTTT-webhooks.png"  width="300" align="right" />
+<img src="./images/garage-cerberus_IFTTT-webhooks.png"  width="300" align="center" />
 
 ### Dashboard 
 <img src="./images/garage-cerberus_dashboard.JPG" align="left" />
