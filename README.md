@@ -23,25 +23,9 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 - Mini [**espejos** acrílicos](https://es.aliexpress.com/item/1861870525.html)
 
 ## El montaje
-<img src="./images/garage-cerberus_bb.png" width="600" align="center" />
-<img src="./images/garage-cerberus_device_inside.jpg" width="300" align="left" />
+<img src="./images/garage-cerberus_device_inside.png" width="300" align="left" />
 <img src="./images/garage-cerberus_device_laser.JPG" width="300" align="right" />
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<img src="./images/garage-cerberus_bb.png" width="500" align="center" />
 
 ## Registro del sensor en la nube
 Vamos a utilizar los servicios de TTN que enrutarán el mensaje desde el _gateway_ que reciba por radiofrecuencia el paquete de datos hasta el _endpoint_ que consumirá la aqplicación que tome acción con la información contenida en la trama da datos. 
@@ -101,7 +85,7 @@ Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una últ
 
 <img src="./images/rpi-docker-logos.png" width="400" align="left" />
 
-La arquitectura elegida para el back y front está pensada para tener unos mínimos costes de operación y ser escalable. El uso de contenedores nos permitirá añadir nuevos dispositivos (Nodos TTN) rápidamente.
+La arquitectura elegida para el back y front está pensada para tener unos mínimos costes de operación y ser escalable. El uso de contenedores nos permitirá añadir nuevos dispositivos (Nodos TTN) rápidamente con su propio _dashboard_ Node-RED ejecutado en el mismo servidor. 
 
 El servidor utilizado ha sido una Raspberry Pi 3B+. Actualmente no es el modelo más potente pero suficiente para ejecutar varios contenedores. Las tareas inicales de configuración para instalar el sistema operativo Raspbian, y MySQL pueden ser fácilmente encontradas y son estándar. Los contenedores Docker y Node-RED con todos sus complementos necesarios para que se pueda ejecutar el flujo completo. Los describo a continuación.
 
@@ -111,7 +95,7 @@ Para estas configuraciones me he basado en el documento: [The easy way to set up
 1. Instalar Docker en RPI:
 ```
 sudo groupadd docker
-sudo gpasswd -a $USER docker    newgrp docker
+sudo gpasswd -a $USER docker newgrp docker
 docker run hello-world
 ```
 2. Se crea el contenedor. Tendremos que mapear con puertos de salida diferentes, 1881 para este contedendor. A fin de que no coincida con los otros. 
@@ -123,26 +107,38 @@ docker run -d -it -p 1881:1880 --name domohome-garage  nodered/node-red
 La aplicación Node-RED no incluye por defecto los nodos que necesitaremos para integrarnos con TTN, con MySQL o para mostrar un interface de usuario, los _dashboard_. En principio, todos se podrían instalar desde la opción _Manage Palette_ de la aplicación de administración a la que deberíamos acceder en la dirección del tipo: http://192.168.1.???:1881
 
 **Nodos de _dashboard_**
+
 Instalación estándar. Buscando el modulo ¨node-red-dashboard¨ en _install_ desde la opción de menú de _Manage Palette_ de la aplicación.
 
 **Nodos intrgración con TTN**
+
 Necesitaremos acceder al contenedor con una sesión SSH [Más info aquí](https://phoenixnap.com/kb/how-to-ssh-into-docker-container)
 ```
 docker exec -it domohome-garage /bin/bash
 ```
 Instalaremos ahora los nodos con el gestor de paquetes npm:
-
-Se instala el nodo TTN: node-red-contrib-ttn (no instalar desde 'manage palette' en el dashboard)
 ```
 npm install node-red-contrib-ttn
 ```
 
 **Nodos MySQL**
+
 Desde la sesión SSH anterior ejecutamos:
 ```
 npm install node-red-node-mysql
 ```
 Para ampliar información sobre el uso y ejemplos la web de TTN tiene esta pägina: https://www.thethingsnetwork.org/docs/applications/nodered/
+
+## Aplicación cliente
+<img src="./images/garage-cerberus_flows.png" align="center" />
+<img src="./images/garage-cerberus_IFTTT.png" align="left" />
+
+En el flujo de Node-RED se trata y muestra gráficamente los mensajes entregados por el servicio TTN. El _payload_ del mensaje contiene dos valores diferentes: ¨alert¨ cuando el haz LASER es interrumpido y ¨alive¨ cada 10 minutos. Además se incluye una lógica para mostar un estado de no disponible cuando en 11 minutos no ha llegado mensaje alguno.
+
+La integración con IFTTT (If This Then That) la he montado con una sencilla llamada a su _endpoint_ REST y utlizando el componenete _Webhooks_ para recibir el evento y los avisos nativos de iOS para notificar la alarma. 
+
+<img src="./images/garage-cerberus_dashboard.JPG" align="center" />
+El resultado final es una pantalla responsiva donde se nos muestra el último evento, el historico y la posibilidad de desactivar los avisos. 
 
 ## Demo
 
