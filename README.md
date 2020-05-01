@@ -25,6 +25,8 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 ## El montaje
 <img src="./images/garage-cerberus_device_inside.png" width="300" align="left" />
 <img src="./images/garage-cerberus_device_laser.JPG" width="300" align="right" />
+<br>
+
 <img src="./images/garage-cerberus_bb.png" width="500" align="center" />
 
 ## Registro del sensor en la nube
