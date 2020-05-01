@@ -15,7 +15,7 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 <img src="./images/garage-cerberus_architecture.png" width="600" align="center" />
 
 ## Demo
-Demo de proceso completo, detección y notificación:
+Demostración del proceso completo: detección y notificación: 
 [![Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
 
 ## Material utilizado
