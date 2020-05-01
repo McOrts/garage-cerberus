@@ -2,7 +2,7 @@
 
 Se me ocurrió que alternativa para proteger el acceso a la plaza de garage comunitaria sin tener que instalar separaciones físicas. Se trata de visibilizar una barrera virtual que detecta y notifica intrusiones.
 
-En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para detectar la interrupción de un haz láser a fin de avisar del paso de una persona. Más adelante podríamos incluir otros detectores de movimientos como un PIR (Passive infrared sensor). O la conexión son un sistema de grabación de imagen, por ejemplo.
+En esta primera iteración, el dispositivo sólo tiene un sensor de luz para detectar la interrupción de un haz láser a fin de avisar del paso de una persona. Más adelante podríamos incluir otros detectores de movimientos como un PIR (Passive infrared sensor). O la conexión son un sistema de grabación de imagen, por ejemplo.
 
 <img src="./images/garage-cerberus_PoC.png" width="300" align="right" />
 El montaje se basa en un procesador ESP32 programado en C++ con las librerías de Arduino LMIC desarrolladas por IBM para los chips LoRa SX1272, SX1276 que son compatibles con muchas placas de prototipo LoRa montadas con micro-procesadores ESP8266. 
