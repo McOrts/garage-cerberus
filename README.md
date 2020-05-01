@@ -57,7 +57,7 @@ Ahora seremos redirigidos a la página con la nueva aplicación añadida donde p
 En TTN un dispositivo (devide) representa la configuración de lo que también llama nodo (node) que a fin de cuentas es nuestro circuito. 
 Al acceder al formulario de registro, únicamente tenermos que rellenar el _Device ID_ que será el nombre único de este nodo. Es preferible  pulsar el icono marcado en la imágen para que se genere automáticamente el _Device EUI_.
 
-<img src="./images/ttn-add-device_params.png" width=400" align="left" />
+<img src="./images/ttn-add-device_params.png" width="400" align="left" />
 
 Finalmente pulsaremos _Register_ y pulsaremos el icono con el nombre de nuestro nuevo dispositivo para ver sus datos de configuración. Aquí encontraremos los parámetros que necesitamos por ser un dispositivo de tipo ABP. Y que tendremos que pasar al fichero de configuración settings.h que se cargará en el _sketch_ del IDE de Arduino.
 Pero el formato para las Keys es diferente. Encontrarás aquí una hoja excel (Encode_EUI.xlsx) que te facilitará esta tarea.
