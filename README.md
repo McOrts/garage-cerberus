@@ -152,8 +152,8 @@ Tras pulsar el botón de ¨import¨ tendrás la vista de los nodos y los flujos.
 
 ### Configurar dispositivo TTN
 Abre las propiedades del nodo **TTN domohome_sensor_garage uplink** y busca los nombres y la Key en la consola de TTN según las siguientes correspondencias:
-<img src="./images/garage-cerberus_nodeTTN1" align="center" />
-<img src="./images/garage-cerberus_nodeTTN2" align="center" />
+<img src="./images/garage-cerberus_nodeTTN1.png" align="center" />
+<img src="./images/garage-cerberus_nodeTTN2.png" align="center" />
 
 <img src="./images/garage-cerberus_IFTTT.png" align="right" />
 
