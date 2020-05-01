@@ -17,7 +17,7 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 
 ## Demo
 Demo de proceso completo, detección y notificación:
-[![Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/qcct-dORirM)
+[![Demo de proceso completo, detección y notificación]https://img.youtube.com/vi/qcct-dORirM/0.jpg](https://youtu.be/qcct-dORirM)
 
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
@@ -88,8 +88,8 @@ const int Buzzer = 15;
 
 ### Formato de la trama
 
-Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una última configuración. Pulsando en la pestaña de _Payload Formats_ accedemos al formulario donde se permite poner un script para decodificar la trama de datos de nuestro mensaje LoRa. En nuestro caso este es el formato.
-<hr>
+Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una última configuración. Pulsando en la pestaña de _Payload Formats_ accedemos al formulario donde se permite poner un script para decodificar la trama de datos de nuestro mensaje LoRa. En nuestro caso este es el formato:
+
 <img src="./images/ttn-add-payload_format.png" width="400" align="center" />
 
 ## Configuración servidor local
