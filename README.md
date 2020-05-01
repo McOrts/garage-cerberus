@@ -61,6 +61,7 @@ En TTN un dispositivo (devide) representa la configuración de lo que también l
 Al acceder al formulario de registro, únicamente tenemos que rellenar el _Device ID_ que será el nombre único de este nodo. Es preferible pulsar el icono marcado en la imagen para que se genere automáticamente el _Device EUI_.
 
 <img src="./images/ttn-add-device_params.png" width="400" align="left" />
+
 <br>
 <br>
 <br>
