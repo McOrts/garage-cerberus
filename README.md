@@ -148,7 +148,7 @@ Para importar el flujo deberemos acceder a la aplicación Node-RED que tenemos a
 <br>
 <img src="./images/garage-cerberus_import-flow.png" align="center" />
 
-Tras pulsar el botón de ¨import¨ tendrás la vista de los nodos y los flujos. Pero hay dos de ellos que no están correctamente configurados.
+Tras pulsar el botón de ¨import¨ tendrás la vista de los nodos y los flujos. Pero hay tres de ellos que no están correctamente configurados.
 
 ### Configurar dispositivo TTN
 Abre las propiedades del nodo **TTN domohome_sensor_garage uplink** y busca los nombres y la Key en la consola de TTN según las siguientes correspondencias:
@@ -167,6 +167,9 @@ https://maker.ifttt.com/trigger/domohome_garage_intruder/with/key/???????????
 Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma.
 
 <img src="./images/garage-cerberus_IFTTT-webhooks.png"  width="300" align="center" />
+
+### Configurar nodo MySQL
+Deberemos recoger toda la información de la cadena de conexión a nuestra BBDD MySQL externa a servidor RPI. Usuario, password, puerto, host... y completar la configuración de la _database_ del nodo MySQL.
 
 ### Dashboard 
 <img src="./images/garage-cerberus_dashboard.JPG" align="left" />
