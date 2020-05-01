@@ -2,7 +2,6 @@
 
 Se me ocurrió que alternativa para proteger el acceso a la plaza de garage comunitaria sin tener que instalar separaciones físicas. Se trata de visibilizar una barrera virtual que detecta y notifica intrusiones.
 
-
 En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para detectar la interrupción de un haz láser a fin de avisar del paso de una persona. Más adelante podríamos incluir otros detectores de movimientos como un PIR (Passive infrared sensor). O la conexión son un sistema de grabación de imagen, por ejemplo.
 
 <img src="./images/garage-cerberus_PoC.png" width="300" align="right" />
@@ -17,7 +16,7 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 
 ## Demo
 Demo de proceso completo, detección y notificación:
-[![Demo de proceso completo, detección y notificación]https://img.youtube.com/vi/qcct-dORirM/0.jpg](https://youtu.be/qcct-dORirM)
+[![Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
 
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
