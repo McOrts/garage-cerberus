@@ -15,6 +15,9 @@ La parte de _backoffice_ es soportada por la plataforma [The Thing Networs (aka 
 <br>
 <img src="./images/garage-cerberus_architecture.png" width="600" align="center" />
 
+## Demo
+[Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
+
 ## Material utilizado
 - He utilizado la *placa* [TTGO LoRa32 V2.0 868 MHz](https://es.aliexpress.com/item/32850086038.html). Basada en el microprocesador ESP32 y en el chip LoRa SX1276, con WiFi y BlueTooth.
 - La **fuente láser** es un pequeño [Diodo de 5mW y longitud de onda roja de 650 nm.](https://es.aliexpress.com/item/32400936169.html)
@@ -86,7 +89,7 @@ const int Buzzer = 15;
 
 Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una última configuración. Pulsando en la pestaña de _Payload Formats_ accedemos al formulario donde se permite poner un script para decodificar la trama de datos de nuestro mensaje LoRa. En nuestro caso este es el formato.
 <hr>
-<img src="./images/ttn-add-payload_format.png" width="500" align="center" />
+<img src="./images/ttn-add-payload_format.png" width="400" align="center" />
 
 ## Configuración servidor local
 
@@ -142,6 +145,7 @@ Para ampliar información sobre el uso y ejemplos la web de TTN tiene esta pági
 En el flujo de Node-RED se trata y muestra gráficamente los mensajes entregados por el servicio TTN. El _payload_ del mensaje contiene dos valores diferentes: ¨alert¨ cuando el haz láser es interrumpido y ¨alive¨ cada 10 minutos. Además se incluye una lógica para mostrar un estado de no disponible cuando en 11 minutos no ha llegado mensaje alguno.
 
 Para importar el flujo deberemos acceder a la aplicación Node-RED que tenemos arrancada en el Docker en una dirección del tipo http://192.168.1.???:1881. Encontraremos la opción de importar pulsando el botón de menú tipo hamburguesa. Lo más fácil es copiar al portapapeles de equipo el contenido del fichero garage-cerberus_flows.json y pegarlo en la pantalla:
+<br>
 <img src="./images/garage-cerberus_import-flow.png" align="center" />
 
 Tras pulsar el botón de ¨import¨ tendrás la vista de los nodos y los flujos. Pero hay dos de ellos que no están correctamente configurados.
@@ -152,17 +156,19 @@ Abre las propiedades del nodo **TTN domohome_sensor_garage uplink** y busca los 
 <img src="./images/garage-cerberus_nodeTTN2" align="center" />
 
 <img src="./images/garage-cerberus_IFTTT.png" align="right" />
+
 ### Configurar integración con IFTTT
 La integración con IFTTT (If This Then That) está montada con una sencilla llamada a su _endpoint_ REST utilizando en nodo tipo _http request_ con el siguiente formato. 
+<br>
 ```
 https://maker.ifttt.com/trigger/domohome_garage_intruder/with/key/???????????
 ```
-Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma
-<img src="./images/garage-cerberus_IFTTT-webhooks.png" align="center" />
+<br>
+Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma.
+
+<img src="./images/garage-cerberus_IFTTT-webhooks.png"  width="300" align="right" />
 
 ### Dashboard 
 <img src="./images/garage-cerberus_dashboard.JPG" align="left" />
-El resultado final es una pantalla responsiva donde se nos muestra el último evento, el histórico y la posibilidad de desactivar los avisos. Accederemos con la misma URL que para la administración pero con el sufijo /ui: http://192.168.1.???:1881/ui
 
-## Demo
-[Demo de proceso completo, detección y notificación](https://img.youtube.com/vi/qcct-dORirM/0.jpg)](https://youtu.be/qcct-dORirM)
+El resultado final es una pantalla responsiva donde se nos muestra el último evento, el histórico y la posibilidad de desactivar los avisos. Accederemos con la misma URL que para la administración pero con el sufijo /ui: http://192.168.1.???:1881/ui
