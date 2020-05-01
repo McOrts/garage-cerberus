@@ -2,6 +2,7 @@
 
 Se me ocurrió que alternativa para proteger el acceso a la plaza de garage comunitaria sin tener que instalar separaciones físicas. Se trata de visibilizar una barrera virtual que detecta y notifica intrusiones.
 
+
 En esta primera iteración, el dispositivo sólo tendrá un sensor de luz para detectar la interrupción de un haz LASER a fin de avisar del paso de una persona. Más adelante podríamos incluir otros detectores de movimientos como un PIR (Passive infrared sensor). O la conexión son un sistema de grabación de imágen, por ejemplo.
 
 <img src="./images/garage-cerberus_PoC.png" width="300" align="right" />
@@ -98,14 +99,14 @@ Tendremos que volver a la pantalla de _Application Overbiew_ para hacer una últ
 
 ## Configuración servidor local
 
-<img src="./images/rpi-docker-logos.png" width=400" align="left" />
+<img src="./images/rpi-docker-logos.png" width="400" align="left" />
 
 La arquitectura elegida para el back y front está pensada para tener unos mínimos costes de operación y ser escalable. El uso de contenedores nos permitirá añadir nuevos dispositivos (Nodos TTN) rápidamente.
 
-El servidor utilizado ha sido una Raspberry Pi 3B+. Actualmente no es el modelo más potente pero suficiente para ejecutar varios contenedores. Las tareas inicales de configuración para instalar el sistema operativo Raspbian, y MySQL pueden ser fácilmente encontradas y son estándar. Los contenedores Docker y Node-RED con todos sus complementos necesarios para que se pueda ejecutar el flujo completo.Se describo a continuación.
+El servidor utilizado ha sido una Raspberry Pi 3B+. Actualmente no es el modelo más potente pero suficiente para ejecutar varios contenedores. Las tareas inicales de configuración para instalar el sistema operativo Raspbian, y MySQL pueden ser fácilmente encontradas y son estándar. Los contenedores Docker y Node-RED con todos sus complementos necesarios para que se pueda ejecutar el flujo completo. Los describo a continuación.
 
 ### Instalación de contenedores
-Para estas configuraciones me he basado en el documento: https://www.freecodecamp.org/news/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef/. Aquí resumo los pasos a seguir:
+Para estas configuraciones me he basado en el documento: [The easy way to set up Docker on a Raspberry Pi](https://www.freecodecamp.org/news/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef/). Aquí resumo los pasos a seguir:
 
 1. Instalar Docker en RPI:
 ```
@@ -113,24 +114,35 @@ sudo groupadd docker
 sudo gpasswd -a $USER docker    newgrp docker
 docker run hello-world
 ```
-2. Se crea el contenedor:
+2. Se crea el contenedor. Tendremos que mapear con puertos de salida diferentes, 1881 para este contedendor. A fin de que no coincida con los otros. 
 ```
 docker run -d -it -p 1881:1880 --name domohome-garage  nodered/node-red
 ```
+
 ### Complementos de Node-RED
-Se accede a una sesión SSH  (https://phoenixnap.com/kb/how-to-ssh-into-docker-container )
-     docker exec -it domohome-garage /bin/bash
+La aplicación Node-RED no incluye por defecto los nodos que necesitaremos para integrarnos con TTN, con MySQL o para mostrar un interface de usuario, los _dashboard_. En principio, todos se podrían instalar desde la opción _Manage Palette_ de la aplicación de administración a la que deberíamos acceder en la dirección del tipo: http://192.168.1.???:1881
+
+**Nodos de _dashboard_**
+Instalación estándar. Buscando el modulo ¨node-red-dashboard¨ en _install_ desde la opción de menú de _Manage Palette_ de la aplicación.
+
+**Nodos intrgración con TTN**
+Necesitaremos acceder al contenedor con una sesión SSH [Más info aquí](https://phoenixnap.com/kb/how-to-ssh-into-docker-container)
+```
+docker exec -it domohome-garage /bin/bash
+```
+Instalaremos ahora los nodos con el gestor de paquetes npm:
+
 Se instala el nodo TTN: node-red-contrib-ttn (no instalar desde 'manage palette' en el dashboard)
-     npm install node-red-contrib-ttn
-Instalar el nodo node-red-dashboard desde 'manage palette' en el dashboard
+```
+npm install node-red-contrib-ttn
+```
 
-Se instala el nodo MySQL: node-red-node-mysql 
-    npm install node-red-node-mysql
-
-
-Una vez habilitada la aplicación Node-RED hay que añadir los nodos de integración de TTN. Esta es la guia 
-
-https://www.thethingsnetwork.org/docs/applications/nodered/
+**Nodos MySQL**
+Desde la sesión SSH anterior ejecutamos:
+```
+npm install node-red-node-mysql
+```
+Para ampliar información sobre el uso y ejemplos la web de TTN tiene esta pägina: https://www.thethingsnetwork.org/docs/applications/nodered/
 
 ## Demo
 
