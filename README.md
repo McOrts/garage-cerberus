@@ -38,7 +38,7 @@ Vamos a utilizar los servicios de TTN que enrutarán el mensaje desde el _gatewa
 Este dispositivo es del tipo ABP (Activation-by-personalisation) lo que significa que se identificará en la red con un _DevAddr_ y una _Session key_ preconfigurada. Para ello tenemos que completar el registro de una aplicación y un dispositivo. Estos son los pasos a seguir:
 
 ### Registro de la aplicación
-Los registros se comunican con la aplicación en la que han sido registrados. Para registras un dispositivo, primero hay que añadir una aplicación.
+Los dispositivos como este sensor se comunican con la aplicación en la que han sido registrados. Para registras un dispositivo, primero hay que añadir una aplicación.
 
 <img src="./images/ttn-add-application.png" width="500" align="right" />
 
