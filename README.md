@@ -177,3 +177,6 @@ Deberemos recoger toda la información de la cadena de conexión a nuestra BBDD 
 <img src="./images/garage-cerberus_dashboard.JPG" align="left" />
 
 El resultado final es una pantalla responsiva donde se nos muestra el último evento, el histórico y la posibilidad de desactivar los avisos. Accederemos con la misma URL que para la administración pero con el sufijo /ui: http://192.168.1.???:1881/ui
+
+### Pendiente: activación OTAA para TTN V3
+https://blog.squix.org/2021/07/ttgo-lora32-v1-0-with-ttn-v3-and-otaa.html
