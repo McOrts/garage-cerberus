@@ -166,7 +166,12 @@ La integración con IFTTT (If This Then That) está montada con una sencilla lla
 https://maker.ifttt.com/trigger/domohome_garage_intruder/with/key/???????????
 ```
 <br>
-Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma.
+Donde sustituiremos las interrogantes por la Key que encontramos en esta configuración del componente Maker _Webhooks_ en IFTTT. Se encuentra siguiendo esta ruta:
+- Configuración de usuario. Account
+- My services
+- webhooks
+- documentation
+Que configuraremos para recibir el evento disparar los avisos nativos en nuestra móvil a fin de tener notificación de la alarma.
 
 <img src="./images/garage-cerberus_IFTTT-webhooks.png"  width="300" align="center" />
 
